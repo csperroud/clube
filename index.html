@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clube de Benefícios Camila Perroud</title>
+
+  <!-- Fonts -->
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&f[]=zodiak@400,700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Design Tokens ── */
+    :root, [data-theme="light"] {
+      --font-display: 'Zodiak', 'Georgia', serif;
+      --font-body: 'Cabinet Grotesk', 'Helvetica Neue', sans-serif;
+      --font-accent: 'Instrument Serif', Georgia, serif;
+
+      --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+      --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+      --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+      --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+      --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+      --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
+      --text-3xl:  clamp(2.5rem,   1rem    + 4vw,    5rem);
+      --text-hero: clamp(3rem,     0.5rem  + 7vw,    8rem);
+
+      --space-1: 0.25rem; --space-2: 0.5rem;  --space-3: 0.75rem;
+      --space-4: 1rem;    --space-5: 1.25rem; --space-6: 1.5rem;
+      --space-8: 2rem;    --space-10: 2.5rem; --space-12: 3rem;
+      --space-16: 4rem;   --space-20: 5rem;   --space-24: 6rem;
+
+      --radius-sm: 0.375rem; --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;  --radius-xl: 1rem;
+      --radius-2xl: 1.5rem;  --radius-full: 9999px;
+
+      /* Custom warm palette — femenino, moderno, confiante */
+      --color-bg:             #faf8f4;
+      --color-surface:        #f5f1eb;
+      --color-surface-2:      #ede8e0;
+      --color-surface-offset: #e6dfd4;
+      --color-divider:        #d9d2c5;
+      --color-border:         #cfc7b8;
+      --color-text:           #2a1f14;
+      --color-text-muted:     #7a6d5e;
+      --color-text-faint:     #b5a898;
+      --color-text-inverse:   #faf8f4;
+
+      /* Rose-Terracotta accent */
+      --color-primary:        #b5432a;
+      --color-primary-hover:  #922e1b;
+      --color-primary-active: #6e2012;
+      --color-primary-light:  #f5e8e4;
+      --color-primary-mid:    #e0c0b6;
+
+      /* Gold accent */
+      --color-gold:           #c9902a;
+      --color-gold-light:     #f7eed8;
+
+      /* Sage green */
+      --color-sage:           #5a7a5c;
+      --color-sage-light:     #e4ede4;
+
+      /* Deep navy for contrast moments */
+      --color-navy:           #1e2d45;
+
+      --shadow-sm: 0 1px 3px oklch(0.2 0.04 40 / 0.08);
+      --shadow-md: 0 4px 16px oklch(0.2 0.04 40 / 0.10);
+      --shadow-lg: 0 12px 36px oklch(0.2 0.04 40 / 0.14);
+
+      --transition: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+      --content-default: 1100px;
+    }
+
+    [data-theme="dark"] {
+      --color-bg:             #18140f;
+      --color-surface:        #1e1912;
+      --color-surface-2:      #252019;
+      --color-surface-offset: #2e2820;
+      --color-divider:        #3a3328;
+      --color-border:         #453e32;
+      --color-text:           #e8e0d4;
+      --color-text-muted:     #a89a88;
+      --color-text-faint:     #6e6256;
+      --color-text-inverse:   #1e1912;
+      --color-primary:        #e0705a;
+      --color-primary-hover:  #e88a78;
+      --color-primary-active: #f0a898;
+      --color-primary-light:  #3a2420;
+      --color-primary-mid:    #5a3028;
+      --color-gold:           #e8b050;
+      --color-gold-light:     #332a18;
+      --color-sage:           #7aaa7c;
+      --color-sage-light:     #1e2e1e;
+      --color-navy:           #7a9ac8;
+      --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.3);
+      --shadow-md: 0 4px 16px oklch(0 0 0 / 0.4);
+      --shadow-lg: 0 12px 36px oklch(0 0 0 / 0.5);
+    }
+
+    /* ── Base Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; scroll-padding-top: 80px; }
+    body {
+      min-height: 100dvh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      line-height: 1.6;
+      transition: background-color var(--transition), color var(--transition);
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    h1,h2,h3,h4 { text-wrap: balance; line-height: 1.2; }
+    p { text-wrap: pretty; }
+    ::selection { background: oklch(from var(--color-primary) l c h / 0.2); }
+
+    /* ── Skip Link ── */
+    .skip-link { position: absolute; top: -100px; left: var(--space-4); background: var(--color-primary); color: var(--color-text-inverse); padding: var(--space-2) var(--space-4); border-radius: var(--radius-md); z-index: 100; font-size: var(--text-sm); font-weight: 700; }
+    .skip-link:focus { top: var(--space-4); }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: oklch(from var(--color-bg) l c h / 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-divider);
+      padding: var(--space-3) var(--space-6);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--space-4);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: var(--space-2);
+      font-size: var(--text-sm); font-weight: 700; letter-spacing: -0.01em;
+    }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-links {
+      display: flex; gap: var(--space-6); list-style: none;
+    }
+    .nav-links a {
+      font-size: var(--text-sm); font-weight: 500;
+      color: var(--color-text-muted);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--color-primary); }
+    .nav-right { display: flex; align-items: center; gap: var(--space-3); }
+    .theme-toggle {
+      width: 40px; height: 40px; border-radius: var(--radius-full);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-text-muted);
+      transition: background var(--transition), color var(--transition);
+    }
+    .theme-toggle:hover { background: var(--color-surface); color: var(--color-text); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 92dvh;
+      display: grid; place-items: center;
+      text-align: center;
+      padding: var(--space-20) var(--space-6) var(--space-16);
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, oklch(from var(--color-primary) l c h / 0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, oklch(from var(--color-gold) l c h / 0.07) 0%, transparent 60%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary-mid);
+      border-radius: var(--radius-full);
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: var(--space-6);
+    }
+    .hero-eyebrow {
+      font-family: var(--font-accent);
+      font-size: var(--text-lg);
+      color: var(--color-text-muted);
+      font-style: italic;
+      margin-bottom: var(--space-3);
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      color: var(--color-text);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: var(--space-6);
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--color-primary);
+      font-family: var(--font-accent);
+    }
+    .hero-sub {
+      font-size: var(--text-lg);
+      color: var(--color-text-muted);
+      max-width: 56ch;
+      margin: 0 auto var(--space-10);
+      line-height: 1.65;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      background: var(--color-primary); color: var(--color-text-inverse);
+      padding: var(--space-4) var(--space-8);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm); font-weight: 700; letter-spacing: 0.02em;
+      box-shadow: var(--shadow-md);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .hero-cta:hover { background: var(--color-primary-hover); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .hero-cta:active { transform: translateY(0); }
+
+    /* Stats bar */
+    .stats-bar {
+      display: flex; flex-wrap: wrap; gap: var(--space-6) var(--space-10);
+      justify-content: center; margin-top: var(--space-12);
+      padding-top: var(--space-10);
+      border-top: 1px solid var(--color-divider);
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 700; color: var(--color-primary);
+      display: block; line-height: 1;
+    }
+    .stat-label {
+      font-size: var(--text-xs); color: var(--color-text-muted);
+      text-transform: uppercase; letter-spacing: 0.06em; margin-top: var(--space-1);
+    }
+
+    /* ── Section layout ── */
+    .section {
+      padding: clamp(var(--space-12), 8vw, var(--space-24)) var(--space-6);
+    }
+    .container { max-width: var(--content-default); margin: 0 auto; }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      font-size: var(--text-xs); font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--color-primary); margin-bottom: var(--space-4);
+    }
+    .section-label::before {
+      content: ''; display: block; width: 20px; height: 2px; background: var(--color-primary);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl); font-weight: 700;
+      letter-spacing: -0.02em; line-height: 1.15;
+      margin-bottom: var(--space-4);
+    }
+    .section-desc {
+      font-size: var(--text-base); color: var(--color-text-muted);
+      max-width: 56ch; line-height: 1.65; margin-bottom: var(--space-10);
+    }
+
+    /* ── Cards grid ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+      gap: var(--space-4);
+    }
+    .card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-6);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      cursor: default;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-primary-mid);
+    }
+    .card-icon {
+      font-size: 2rem; margin-bottom: var(--space-4);
+      display: block; line-height: 1;
+    }
+    .card-title {
+      font-size: var(--text-lg); font-weight: 700;
+      margin-bottom: var(--space-2); color: var(--color-text);
+    }
+    .card-body {
+      font-size: var(--text-sm); color: var(--color-text-muted);
+      line-height: 1.65;
+    }
+    .card-tag {
+      display: inline-block; margin-top: var(--space-4);
+      font-size: var(--text-xs); font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      background: var(--color-primary-light); color: var(--color-primary);
+    }
+
+    /* Card accent variants */
+    .card.gold .card-tag { background: var(--color-gold-light); color: var(--color-gold); }
+    .card.sage .card-tag { background: var(--color-sage-light); color: var(--color-sage); }
+
+    /* ── Featured cards (big) ── */
+    .cards-featured {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(420px, 100%), 1fr));
+      gap: var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+    .card-featured {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .card-featured:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .card-featured-header {
+      display: flex; align-items: flex-start;
+      gap: var(--space-4); margin-bottom: var(--space-5);
+    }
+    .card-featured-icon {
+      width: 56px; height: 56px; flex-shrink: 0;
+      background: var(--color-primary-light);
+      border-radius: var(--radius-xl);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.75rem;
+    }
+    .card.gold .card-featured-icon,
+    .card-featured.gold .card-featured-icon { background: var(--color-gold-light); }
+    .card-featured.sage .card-featured-icon { background: var(--color-sage-light); }
+    .card-featured-title {
+      font-size: var(--text-xl); font-weight: 800;
+      letter-spacing: -0.02em; line-height: 1.2;
+    }
+    .card-featured-sub {
+      font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-1);
+    }
+    .card-list {
+      list-style: none; display: flex; flex-direction: column; gap: var(--space-3);
+    }
+    .card-list li {
+      display: flex; align-items: flex-start; gap: var(--space-3);
+      font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.55;
+    }
+    .card-list li::before {
+      content: '→'; color: var(--color-primary); flex-shrink: 0; font-weight: 700;
+    }
+    .card-featured.gold .card-list li::before { color: var(--color-gold); }
+    .card-featured.sage .card-list li::before { color: var(--color-sage); }
+
+    /* ── Highlight card (full-width) ── */
+    .card-highlight {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-10) var(--space-8);
+      display: grid; grid-template-columns: 1fr auto;
+      gap: var(--space-8); align-items: center;
+    }
+    .card-highlight-title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl); font-weight: 700;
+      letter-spacing: -0.02em; line-height: 1.15;
+      margin-bottom: var(--space-3);
+    }
+    .card-highlight-title em {
+      font-family: var(--font-accent);
+      font-style: italic;
+      opacity: 0.85;
+    }
+    .card-highlight-body {
+      font-size: var(--text-base);
+      opacity: 0.85; max-width: 52ch; line-height: 1.65;
+    }
+    .card-highlight-emoji {
+      font-size: clamp(4rem, 8vw, 7rem); line-height: 1;
+      filter: drop-shadow(0 4px 12px oklch(0 0 0 / 0.2));
+    }
+
+    /* ── Fine print section ── */
+    .fine-print {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+    }
+    .fine-print-title {
+      font-size: var(--text-lg); font-weight: 700;
+      margin-bottom: var(--space-4);
+      display: flex; align-items: center; gap: var(--space-2);
+    }
+    .fine-print-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+      gap: var(--space-4);
+    }
+    .fine-item {
+      display: flex; gap: var(--space-3); align-items: flex-start;
+    }
+    .fine-item-dot {
+      width: 8px; height: 8px; border-radius: var(--radius-full);
+      background: var(--color-primary-mid); flex-shrink: 0; margin-top: 7px;
+    }
+    .fine-item-text { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.55; }
+
+    /* ── Quote section ── */
+    .quote-section {
+      text-align: center;
+      padding: clamp(var(--space-12), 8vw, var(--space-20)) var(--space-6);
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-divider);
+      border-bottom: 1px solid var(--color-divider);
+    }
+    .quote-mark {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 12vw, 10rem);
+      color: var(--color-primary-mid);
+      line-height: 0.6; margin-bottom: var(--space-4);
+      display: block;
+    }
+    blockquote {
+      font-family: var(--font-accent);
+      font-size: var(--text-xl);
+      font-style: italic;
+      color: var(--color-text);
+      max-width: 720px; margin: 0 auto var(--space-6);
+      line-height: 1.5;
+    }
+    cite {
+      font-size: var(--text-sm); color: var(--color-text-muted);
+      font-style: normal; font-weight: 700;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: var(--space-10) var(--space-6) var(--space-8);
+      text-align: center;
+      border-top: 1px solid var(--color-divider);
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: var(--text-lg); font-weight: 700;
+      margin-bottom: var(--space-2); color: var(--color-text);
+    }
+    .footer-sub { font-size: var(--text-xs); color: var(--color-text-faint); }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px; background: var(--color-divider);
+      max-width: var(--content-default); margin: 0 auto;
+    }
+
+    /* ── Scroll animations ── */
+    .fade-in { opacity: 1; }
+    @supports (animation-timeline: scroll()) {
+      .fade-in {
+        opacity: 0;
+        animation: fade-reveal linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 80%;
+      }
+    }
+    @keyframes fade-reveal { to { opacity: 1; } }
+
+    /* ── Mobile ── */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero-title { letter-spacing: -0.01em; }
+      .card-highlight {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .card-highlight-emoji { display: none; }
+      .stats-bar { gap: var(--space-5) var(--space-6); }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme]) {
+        --color-bg: #18140f; --color-surface: #1e1912; --color-surface-2: #252019;
+        --color-surface-offset: #2e2820; --color-divider: #3a3328; --color-border: #453e32;
+        --color-text: #e8e0d4; --color-text-muted: #a89a88; --color-text-faint: #6e6256;
+        --color-text-inverse: #1e1912;
+        --color-primary: #e0705a; --color-primary-hover: #e88a78; --color-primary-active: #f0a898;
+        --color-primary-light: #3a2420; --color-primary-mid: #5a3028;
+        --color-gold: #e8b050; --color-gold-light: #332a18;
+        --color-sage: #7aaa7c; --color-sage-light: #1e2e1e;
+        --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.3);
+        --shadow-md: 0 4px 16px oklch(0 0 0 / 0.4);
+        --shadow-lg: 0 12px 36px oklch(0 0 0 / 0.5);
+      }
+    }
+  
+    /* ── Tab Navigation ── */
+    .tab-link {
+      font-size: var(--text-sm); font-weight: 500;
+      color: var(--color-text-muted);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      transition: color var(--transition), background var(--transition);
+    }
+    .tab-link:hover { color: var(--color-primary); }
+    .tab-link.active-tab {
+      color: var(--color-primary);
+      background: var(--color-primary-light);
+      font-weight: 700;
+    }
+
+    /* ── Quiz ── */
+    .quiz-section { min-height: 80dvh; }
+    .quiz-progress-wrap {
+      height: 6px; background: var(--color-surface-2);
+      border-radius: var(--radius-full); overflow: hidden;
+      margin-bottom: var(--space-3);
+    }
+    .quiz-progress-bar {
+      height: 100%; background: var(--color-primary);
+      border-radius: var(--radius-full);
+      transition: width 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .quiz-meta {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: var(--space-8);
+      font-size: var(--text-xs); font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .quiz-counter { color: var(--color-text-muted); }
+    .quiz-score-live { color: var(--color-primary); }
+    .quiz-container {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      min-height: 300px;
+    }
+    .quiz-question-num {
+      font-size: var(--text-xs); font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--color-primary); margin-bottom: var(--space-3);
+    }
+    .quiz-question-text {
+      font-family: var(--font-display);
+      font-size: var(--text-xl); font-weight: 700;
+      letter-spacing: -0.02em; line-height: 1.3;
+      margin-bottom: var(--space-6); color: var(--color-text);
+    }
+    .quiz-options {
+      display: flex; flex-direction: column; gap: var(--space-3);
+      list-style: none;
+    }
+    .quiz-option {
+      display: flex; align-items: center; gap: var(--space-3);
+      padding: var(--space-4) var(--space-5);
+      background: var(--color-bg);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      cursor: pointer; font-size: var(--text-base); font-weight: 500;
+      color: var(--color-text);
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+      text-align: left; width: 100%;
+    }
+    .quiz-option:hover:not(:disabled) {
+      border-color: var(--color-primary);
+      background: var(--color-primary-light);
+      transform: translateX(4px);
+    }
+    .quiz-option:active:not(:disabled) { transform: translateX(2px); }
+    .quiz-option.correct {
+      border-color: var(--color-sage);
+      background: var(--color-sage-light);
+      color: var(--color-sage);
+    }
+    .quiz-option.wrong {
+      border-color: var(--color-primary);
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+    .quiz-option.reveal-correct {
+      border-color: var(--color-sage);
+      background: var(--color-sage-light);
+      color: var(--color-sage);
+      font-weight: 700;
+    }
+    .quiz-option:disabled { cursor: default; }
+    .quiz-option-icon {
+      font-size: 1.1rem; flex-shrink: 0; width: 20px; text-align: center;
+    }
+    .quiz-feedback {
+      margin-top: var(--space-5);
+      padding: var(--space-4) var(--space-5);
+      border-radius: var(--radius-lg);
+      font-size: var(--text-sm); font-weight: 500; line-height: 1.55;
+      display: none;
+    }
+    .quiz-feedback.correct { background: var(--color-sage-light); color: var(--color-sage); }
+    .quiz-feedback.wrong { background: var(--color-primary-light); color: var(--color-primary); }
+    .quiz-next-btn {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      background: var(--color-primary); color: var(--color-text-inverse);
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm); font-weight: 700;
+      margin-top: var(--space-6);
+      transition: background var(--transition), transform var(--transition);
+      display: none;
+    }
+    .quiz-next-btn:hover { background: var(--color-primary-hover); transform: translateY(-1px); }
+
+    /* Result screen */
+    .quiz-result {
+      text-align: center;
+      padding: var(--space-12) var(--space-6);
+    }
+    .quiz-result-emoji { font-size: 5rem; margin-bottom: var(--space-6); line-height: 1; }
+    .quiz-result-title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl); font-weight: 700;
+      letter-spacing: -0.02em; margin-bottom: var(--space-3);
+    }
+    .quiz-result-score {
+      font-size: var(--text-xl); font-weight: 800;
+      color: var(--color-primary); margin-bottom: var(--space-3);
+    }
+    .quiz-result-msg {
+      font-size: var(--text-base); color: var(--color-text-muted);
+      max-width: 44ch; margin: 0 auto; line-height: 1.65;
+    }
+
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Pular para conteúdo</a>
+
+<!-- ── NAV ── -->
+<nav aria-label="Navegação principal">
+  <div class="nav-logo">
+    <!-- SVG Logo: diamante+iniciais CP -->
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="Logo CP">
+      <polygon points="16,2 30,16 16,30 2,16" fill="none" stroke="var(--color-primary)" stroke-width="2"/>
+      <polygon points="16,7 25,16 16,25 7,16" fill="var(--color-primary)" opacity="0.15"/>
+      <text x="16" y="20" text-anchor="middle" font-family="Cabinet Grotesk, sans-serif" font-size="9" font-weight="800" fill="var(--color-primary)">CP</text>
+    </svg>
+    Clube CP
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" data-tab="beneficios" class="tab-link active-tab">Benefícios</a></li>
+    <li><a href="#" data-tab="quiz" class="tab-link">Quiz da Camila</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" data-theme-toggle aria-label="Alternar tema" title="Alternar modo claro/escuro">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div id="tab-beneficios" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-beneficios">
+<!-- ── HERO ── -->
+<header class="hero" id="main">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Benefícios Exclusivos ✦</div>
+    <p class="hero-eyebrow">Bem-vindo ao</p>
+    <h1 class="hero-title">
+      Clube de Benefícios<br>
+      <em>Camila Perroud</em>
+    </h1>
+    <p class="hero-sub">
+      Porque ter a Camila por perto é, literalmente, um pacote completo de vantagens.
+    </p>
+    <a href="#beneficios" class="hero-cta" aria-label="Ver todos os benefícios">
+      Ver benefícios
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+    <div class="stats-bar">
+      <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Brigadeiros disponíveis</span></div>
+      <div class="stat"><span class="stat-num">1</span><span class="stat-label">Nintendo 64 vintage</span></div>
+      <div class="stat"><span class="stat-num">3</span><span class="stat-label">IAs pagas incluídas</span></div>
+      <div class="stat"><span class="stat-num">0</span><span class="stat-label">Réus primários usados</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ── QUOTE ── -->
+<section class="quote-section" aria-labelledby="quote-heading">
+  <span class="quote-mark" aria-hidden="true">"</span>
+  <blockquote>
+    Parceira imbatível em Perfil, fornecedora fiel de brigadeiro e aliada incondicional — com ou sem vinho.
+  </blockquote>
+  <cite>— Camila Perroud, fundadora do clube</cite>
+</section>
+
+<!-- ── BENEFÍCIOS PRINCIPAIS ── -->
+<section class="section" id="beneficios" aria-labelledby="benef-heading">
+  <div class="container">
+    <span class="section-label" aria-hidden="true">O pacote completo</span>
+    <h2 class="section-title" id="benef-heading">O que está incluído</h2>
+    <p class="section-desc">Desde brigadeiro artesanal até suporte técnico de risco, confira os benefícios que fazem parte do clube.</p>
+
+    <div class="cards-featured fade-in" id="premium">
+      <!-- ALIMENTAÇÃO -->
+      <article class="card-featured fade-in" aria-labelledby="card-food-title">
+        <div class="card-featured-header">
+          <div class="card-featured-icon">🍰</div>
+          <div>
+            <h3 class="card-featured-title" id="card-food-title">Alimentação & Bem-Estar</h3>
+            <p class="card-featured-sub">Feito com as mãos da Agda</p>
+          </div>
+        </div>
+        <ul class="card-list">
+          <li>Comida artesanal inclusa — bolos, doces e criações saídas das mãos da Agda, com carinho</li>
+          <li>Brigadeiro premium, de qualidade comprovada e fornecimento frequente</li>
+          <li>Duo Gourmet ativo — lista extensa de restaurantes onde só pagamos um prato</li>
+          <li>Projeto culinário bônus: vinho + receita = a Camila tenta. Resultado não garantido, companhia sim</li>
+        </ul>
+        <span class="card-tag">Alimentação</span>
+      </article>
+
+      <!-- TECNOLOGIA -->
+      <article class="card-featured fade-in" aria-labelledby="card-tech-title">
+        <div class="card-featured-header">
+          <div class="card-featured-icon">💻</div>
+          <div>
+            <h3 class="card-featured-title" id="card-tech-title">Tecnologia & Suporte</h3>
+            <p class="card-featured-sub">Desmonta, mas com boa vontade</p>
+          </div>
+        </div>
+        <ul class="card-list">
+          <li>Suporte em TI disponível — desde que você aceite o risco de ter seu iPhone desmontado</li>
+          <li>Acesso a IAs pagas: Gemini, Perplexity e Claude inclusos no pacote</li>
+          <li>Kit de sobrevivência digital sempre na bolsa: cabos, power bank, adaptadores, fone</li>
+          <li>Nintendo 64 para uso recreativo — relíquia. Funciona. É incrível.</li>
+        </ul>
+        <span class="card-tag">Tecnologia</span>
+      </article>
+
+      <!-- FINANCEIRO -->
+      <article class="card-featured gold fade-in" aria-labelledby="card-fin-title">
+        <div class="card-featured-header">
+          <div class="card-featured-icon">💰</div>
+          <div>
+            <h3 class="card-featured-title" id="card-fin-title">Benefícios Financeiros</h3>
+            <p class="card-featured-sub">Aproveite enquanto dura</p>
+          </div>
+        </div>
+        <ul class="card-list">
+          <li>Vale disponível no primeiro dia do mês — aproveite a janela certa</li>
+          <li>Salário com duas datas fixas: 3º dia útil e dia 15, para seu planejamento</li>
+          <li>GymPass compartilhável — plano de dependente disponível após upgrade de plano</li>
+        </ul>
+        <span class="card-tag" style="background:var(--color-gold-light);color:var(--color-gold)">Financeiro</span>
+      </article>
+
+      <!-- MOBILIDADE -->
+      <article class="card-featured sage fade-in" aria-labelledby="card-mob-title">
+        <div class="card-featured-header">
+          <div class="card-featured-icon">🚗</div>
+          <div>
+            <h3 class="card-featured-title" id="card-mob-title">Mobilidade & Acesso</h3>
+            <p class="card-featured-sub">Sem burocracia</p>
+          </div>
+        </div>
+        <ul class="card-list">
+          <li>Estacionamento gratuito em dias de show e/ou jogo no Botafogo</li>
+          <li>Acesso a vagas e filas preferenciais — benefício real, imediato</li>
+          <li>Topa qualquer evento: Poupatempo, centro, escolher roupa, esconder um corpo — a resposta provável é sim</li>
+        </ul>
+        <span class="card-tag" style="background:var(--color-sage-light);color:var(--color-sage)">Mobilidade</span>
+      </article>
+    </div>
+
+    <!-- CARDS MENORES -->
+    <div class="cards-grid">
+      <!-- Desenvolvimento -->
+      <article class="card fade-in" aria-labelledby="card-dev-title">
+        <span class="card-icon" aria-hidden="true">🎓</span>
+        <h3 class="card-title" id="card-dev-title">Desenvolvimento Pessoal</h3>
+        <p class="card-body">Mentoria de LinkedIn com like garantido, dicas corporativas, educação em vinhos, conselhos sexuais e repertório cultural ilimitado para você parecer mais inteligente nas conversas.</p>
+        <span class="card-tag">Networking</span>
+      </article>
+
+      <!-- Manutenção -->
+      <article class="card fade-in" aria-labelledby="card-manut-title">
+        <span class="card-icon" aria-hidden="true">🔧</span>
+        <h3 class="card-title" id="card-manut-title">Manutenção & Reparos</h3>
+        <p class="card-body">Ferramentas sempre disponíveis. Tomada não funciona? A Camila tenta. Liquidificador quebrou? A Camila tenta arrumar. Política de aprendizado contínuo: o que não sabe hoje, aprende amanhã.</p>
+        <span class="card-tag">Serviços</span>
+      </article>
+
+      <!-- Saúde -->
+      <article class="card fade-in" aria-labelledby="card-saude-title">
+        <span class="card-icon" aria-hidden="true">💊</span>
+        <h3 class="card-title" id="card-saude-title">Saúde & Bem-Estar</h3>
+        <p class="card-body">Farmácia ambulante inclusa — literalmente qualquer remédio está disponível na bolsa agora. Skin care também está no pacote.</p>
+        <span class="card-tag sage">Saúde</span>
+      </article>
+
+      <!-- Lazer -->
+      <article class="card fade-in" aria-labelledby="card-lazer-title">
+        <span class="card-icon" aria-hidden="true">🎲</span>
+        <h3 class="card-title" id="card-lazer-title">Lazer & Entretenimento</h3>
+        <p class="card-body">Parceira imbatível em Perfil ou qualquer jogo de perguntas e respostas. Fã declarada de jogos de tabuleiro. Bônus: Nintendo 64 sempre disponível.</p>
+        <span class="card-tag">Lazer</span>
+      </article>
+
+      <!-- Matemática -->
+      <article class="card fade-in" aria-labelledby="card-math-title">
+        <span class="card-icon" aria-hidden="true">➕</span>
+        <h3 class="card-title" id="card-math-title">Suporte Acadêmico</h3>
+        <p class="card-body">Você pode falar sobre matemática com ela — e ela vai amar aprender junto. Eterna fornecedora de repertório para você parecer ainda mais inteligente.</p>
+        <span class="card-tag gold">Educação</span>
+      </article>
+
+      <!-- Presentes -->
+      <article class="card fade-in" aria-labelledby="card-gift-title">
+        <span class="card-icon" aria-hidden="true">🎁</span>
+        <h3 class="card-title" id="card-gift-title">Presentes Excepcionais</h3>
+        <p class="card-body">Critério elevado, entrega garantida. Modéstia à parte — os presentes são muito bons. E com grande probabilidade, seu bolo de aniversário será feito pela matriarca Perroud.</p>
+        <span class="card-tag">Social</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── HIGHLIGHT ── -->
+<section class="section" aria-label="Benefício especial">
+  <div class="container">
+    <div class="card-highlight fade-in">
+      <div>
+        <h2 class="card-highlight-title">
+          Natal e Ano-Novo<br>
+          <em>na família Perroud</em>
+        </h2>
+        <p class="card-highlight-body">
+          Todo ano aparece um amigo novo aqui. Você pode ser o próximo.
+          Bolo de aniversário, brigadeiro, jogos de tabuleiro — tudo incluso no pacote afetivo completo.
+        </p>
+      </div>
+      <div class="card-highlight-emoji" aria-hidden="true">🎄</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINE PRINT ── -->
+<section class="section" id="fine-print" aria-labelledby="fine-heading">
+  <div class="container">
+    <span class="section-label" aria-hidden="true">Termos e condições</span>
+    <h2 class="section-title" id="fine-heading">Letras miúdas do clube</h2>
+    <div class="fine-print fade-in">
+      <h3 class="fine-print-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        Informações importantes
+      </h3>
+      <div class="fine-print-grid">
+        <div class="fine-item"><div class="fine-item-dot"></div><p class="fine-item-text">Suporte em TI disponível, porém desmontagem de iPhones é um efeito colateral comum.</p></div>
+        <div class="fine-item"><div class="fine-item-dot"></div><p class="fine-item-text">GymPass disponível assim que o upgrade de plano for concluído. Aguardar comunicado.</p></div>
+        <div class="fine-item"><div class="fine-item-dot"></div><p class="fine-item-text">Vale disponível no primeiro dia do mês — marque no calendário.</p></div>
+        <div class="fine-item"><div class="fine-item-dot"></div><p class="fine-item-text">Salário: 3º dia útil e dia 15 de cada mês. Planeje-se com responsabilidade.</p></div>
+        <div class="fine-item"><div class="fine-item-dot"></div><p class="fine-item-text">Serviço de "esconder corpo" sujeito a análise de viabilidade e discrição mútua.</p></div>
+        <div class="fine-item"><div class="fine-item-dot"></div><p class="fine-item-text">Resultado culinário bônus não garantido, mas a companhia e o vinho sempre compensam.</p></div>
+        <div class="fine-item"><div class="fine-item-dot"></div><p class="fine-item-text">Defesa jurídica informal ativa. Réu primário preservado e ainda disponível para uso.</p></div>
+        <div class="fine-item"><div class="fine-item-dot"></div><p class="fine-item-text">Bolo de aniversário pela matriarca sujeito à disponibilidade de agenda da família Perroud.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div id="tab-quiz" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-quiz" style="display:none">
+<section class="section quiz-section" aria-labelledby="quiz-heading">
+  <div class="container" style="max-width:720px">
+    <span class="section-label" aria-hidden="true">Teste seus conhecimentos</span>
+    <h2 class="section-title" id="quiz-heading">Quiz da Camila</h2>
+    <p class="section-desc">Quanto você sabe sobre a Camila Perroud? Responda as perguntas e descubra!</p>
+
+    <!-- Progress bar -->
+    <div class="quiz-progress-wrap" aria-label="Progresso do quiz">
+      <div class="quiz-progress-bar" id="quiz-progress-bar" style="width:0%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="quiz-meta">
+      <span id="quiz-counter" class="quiz-counter">Pergunta 1 de 11</span>
+      <span id="quiz-score-live" class="quiz-score-live">✦ 0 acertos</span>
+    </div>
+
+    <!-- Question container -->
+    <div id="quiz-container" class="quiz-container">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Result screen -->
+    <div id="quiz-result" class="quiz-result" style="display:none" aria-live="polite">
+      <div class="quiz-result-emoji" id="result-emoji">🎉</div>
+      <h3 class="quiz-result-title" id="result-title">Quiz concluído!</h3>
+      <p class="quiz-result-score" id="result-score"></p>
+      <p class="quiz-result-msg" id="result-msg"></p>
+      <button class="hero-cta" id="quiz-retry" style="margin-top:var(--space-8)">
+        Tentar novamente
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p class="footer-logo">Clube CP ✦</p>
+  <p class="footer-sub">© 2025 Clube de Benefícios Camila Perroud · Todos os direitos, obrigações e brigadeiros reservados.</p>
+</footer>
+
+<script>
+  // Theme toggle
+  (function(){
+    const t = document.querySelector('[data-theme-toggle]');
+    const r = document.documentElement;
+    let d = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+    if (!r.hasAttribute('data-theme')) r.setAttribute('data-theme', d);
+    else d = r.getAttribute('data-theme');
+    updateIcon();
+    t && t.addEventListener('click', () => {
+      d = d === 'dark' ? 'light' : 'dark';
+      r.setAttribute('data-theme', d);
+      updateIcon();
+    });
+    function updateIcon() {
+      if (!t) return;
+      t.setAttribute('aria-label', 'Alternar para modo ' + (d === 'dark' ? 'claro' : 'escuro'));
+      t.innerHTML = d === 'dark'
+        ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+        : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    }
+  })();
+
+  // ── Tab switching ──
+  document.querySelectorAll('.tab-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const tab = link.dataset.tab;
+      document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active-tab'));
+      link.classList.add('active-tab');
+      document.querySelectorAll('.tab-panel').forEach(p => {
+        p.style.display = p.id === 'tab-' + tab ? '' : 'none';
+      });
+      if (tab === 'quiz' && !quizStarted) startQuiz();
+    });
+  });
+
+  // ── Quiz ──
+  const questions = [
+    {
+      q: "Qual a data de aniversário da Camila?",
+      options: ["14 de Fevereiro", "18 de Fevereiro", "22 de Fevereiro", "7 de Fevereiro"],
+      correct: 1,
+      feedback: { right: "Correto! 18 de Fevereiro — já anotou na agenda? 🎂", wrong: "Quase! O mês estava certo, mas o dia é 18 de Fevereiro." }
+    },
+    {
+      q: "Quais são os nomes dos cachorros da Camila?",
+      options: ["Thor e Biscuit", "Napoleão e Toddy", "Freud e Pipoca", "Napoleão e Mel"],
+      correct: 1,
+      feedback: { right: "Exato! Napoleão e Toddy — um dupla muito nobre. 🐾", wrong: "Errou! Os fofos se chamam Napoleão e Toddy." }
+    },
+    {
+      q: "Qual o nome da profissão da Camila?",
+      options: ["Desenvolvedora de Software", "Analista de Dados", "Analista de Qualidade de Software", "Gerente de Projetos"],
+      correct: 2,
+      feedback: { right: "Isso mesmo! Analista de Qualidade de Software — QA no comando. ✅", wrong: "Não! Ela é Analista de Qualidade de Software (QA)." }
+    },
+    {
+      q: "Com qual cliente a Camila precisou lidar por muito tempo?",
+      options: ["Band", "Globo", "SBT", "Record"],
+      correct: 1,
+      feedback: { right: "Sim! A Globo. Uma experiência de armazenar na memória afetiva. 📺", wrong: "Errou! O cliente foi a Globo." }
+    },
+    {
+      q: "Qual o filme favorito da Camila?",
+      options: ["Eterno Brilho de um Dia sem Sol", "Brilho Eterno de uma Mente sem Lembranças", "A Origem", "50 Primeiros Beijos"],
+      correct: 1,
+      feedback: { right: "Correto! Brilho Eterno de uma Mente sem Lembranças — uma escolha impecável. 🎬", wrong: "Errou! O favorito dela é Brilho Eterno de uma Mente sem Lembranças." }
+    },
+    {
+      q: "Qual refeição do dia a Camila mais gosta?",
+      options: ["Café da Manhã", "Almoço", "Café da Tarde", "Jantar"],
+      correct: 2,
+      feedback: { right: "Sim! Café da Tarde — a refeição mais subestimada e ela sabe disso. ☕🍰", wrong: "Não acertou! A favorita dela é o Café da Tarde." }
+    },
+    {
+      q: "Se a Camila tivesse que ficar sem algo para o resto da vida, o que ela escolheria abrir mão?",
+      options: ["Sexo", "Chocolate", "Redes Sociais", "Música", "Refrigerante"],
+      correct: 4,
+      feedback: { right: "Exato! Refrigerante. Cada um tem seus limites. 🥤❌", wrong: "Errou! Ela abriria mão do Refrigerante — os outros são inegociáveis." }
+    },
+    {
+      q: "Qual é o número do sapato da Camila?",
+      options: ["37", "38", "39", "40"],
+      correct: 2,
+      feedback: { right: "Correto! 39 — anota aí pra quando for dar de presente. 👟", wrong: "Errou! O número dela é 39." }
+    },
+    {
+      q: "O que a Camila não tem mais dentro dela?",
+      options: ["Apêndice", "Vesícula Biliar", "Amígdalas", "Menisco"],
+      correct: 1,
+      feedback: { right: "Isso! Vesícula Biliar — ela decidiu viver leve, literalmente. 🫀", wrong: "Errou! O que falta é a Vesícula Biliar." }
+    },
+    {
+      q: "Quantos ossos a Camila já quebrou?",
+      options: ["3", "5", "7", "9"],
+      correct: 2,
+      feedback: { right: "Correto! 7 ossos quebrados — a Camila é resistente, mas testou bastante. 🦴", wrong: "Não acertou! Foram 7 ossos quebrados ao longo da vida." }
+    },
+    {
+      q: "Qual dessas profissões a Camila NÃO exerceu?",
+      options: ["Analista de Pesquisa", "Professora de Exatas", "Corretora de Artigos Acadêmicos", "Dona de Brechó", "Freelancer de Designer Gráfico", "Pet Sitter"],
+      correct: 5,
+      feedback: { right: "Isso mesmo! Pet Sitter é a única que ficou de fora — apesar de amar os pets. 🐶", wrong: "Errou! A profissão que ela NÃO exerceu foi Pet Sitter." }
+    }
+  ];
+
+  let quizStarted = false;
+  let current = 0;
+  let score = 0;
+  let answered = false;
+
+  function startQuiz() {
+    quizStarted = true;
+    current = 0;
+    score = 0;
+    answered = false;
+    document.getElementById('quiz-result').style.display = 'none';
+    document.getElementById('quiz-container').style.display = '';
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    const q = questions[current];
+    const total = questions.length;
+    const pct = Math.round((current / total) * 100);
+
+    document.getElementById('quiz-progress-bar').style.width = pct + '%';
+    document.getElementById('quiz-progress-bar').setAttribute('aria-valuenow', pct);
+    document.getElementById('quiz-counter').textContent = 'Pergunta ' + (current + 1) + ' de ' + total;
+    document.getElementById('quiz-score-live').textContent = '✦ ' + score + ' acerto' + (score !== 1 ? 's' : '');
+
+    answered = false;
+
+    const container = document.getElementById('quiz-container');
+    container.innerHTML = `
+      <p class="quiz-question-num">Pergunta ${current + 1}</p>
+      <h3 class="quiz-question-text">${q.q}</h3>
+      <ul class="quiz-options" role="list">
+        ${q.options.map((opt, i) => `
+          <li>
+            <button class="quiz-option" data-idx="${i}" aria-label="Opção: ${opt}">
+              <span class="quiz-option-icon" aria-hidden="true">○</span>
+              ${opt}
+            </button>
+          </li>`).join('')}
+      </ul>
+      <div class="quiz-feedback" id="quiz-feedback" role="alert"></div>
+      <button class="quiz-next-btn" id="quiz-next-btn" aria-label="${current < total - 1 ? 'Próxima pergunta' : 'Ver resultado'}">
+        ${current < total - 1 ? 'Próxima pergunta' : 'Ver resultado'}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    `;
+
+    container.querySelectorAll('.quiz-option').forEach(btn => {
+      btn.addEventListener('click', () => selectAnswer(parseInt(btn.dataset.idx)));
+    });
+
+    document.getElementById('quiz-next-btn').addEventListener('click', nextQuestion);
+  }
+
+  function selectAnswer(idx) {
+    if (answered) return;
+    answered = true;
+    const q = questions[current];
+    const options = document.querySelectorAll('.quiz-option');
+    const feedback = document.getElementById('quiz-feedback');
+
+    options.forEach(btn => { btn.disabled = true; });
+
+    if (idx === q.correct) {
+      score++;
+      options[idx].classList.add('correct');
+      options[idx].querySelector('.quiz-option-icon').textContent = '✓';
+      feedback.className = 'quiz-feedback correct';
+      feedback.textContent = q.feedback.right;
+    } else {
+      options[idx].classList.add('wrong');
+      options[idx].querySelector('.quiz-option-icon').textContent = '✗';
+      options[q.correct].classList.add('reveal-correct');
+      options[q.correct].querySelector('.quiz-option-icon').textContent = '✓';
+      feedback.className = 'quiz-feedback wrong';
+      feedback.textContent = q.feedback.wrong;
+    }
+
+    feedback.style.display = 'block';
+    document.getElementById('quiz-score-live').textContent = '✦ ' + score + ' acerto' + (score !== 1 ? 's' : '');
+    document.getElementById('quiz-next-btn').style.display = 'inline-flex';
+  }
+
+  function nextQuestion() {
+    current++;
+    if (current < questions.length) {
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  }
+
+  function showResult() {
+    const total = questions.length;
+    document.getElementById('quiz-container').style.display = 'none';
+    const result = document.getElementById('quiz-result');
+    result.style.display = 'block';
+
+    document.getElementById('quiz-progress-bar').style.width = '100%';
+    document.getElementById('quiz-counter').textContent = 'Quiz concluído!';
+    document.getElementById('quiz-score-live').textContent = '✦ ' + score + ' acertos';
+
+    const pct = score / total;
+    let emoji, title, msg;
+    if (pct === 1) {
+      emoji = '🏆'; title = 'Nota 10!';
+      msg = 'Você conhece a Camila melhor do que muita gente. Parabéns — você claramente presta atenção!';
+    } else if (pct >= 0.7) {
+      emoji = '🎉'; title = 'Muito bem!';
+      msg = 'Você conhece a Camila de verdade. Uns detalhes escaparam, mas o essencial está bem guardado.';
+    } else if (pct >= 0.4) {
+      emoji = '🤔'; title = 'Pode melhorar!';
+      msg = 'Você sabe o básico, mas a Camila tem muito mais a oferecer. Que tal passar mais tempo com ela?';
+    } else {
+      emoji = '😅'; title = 'Hmm...';
+      msg = 'Parece que vocês ainda estão se conhecendo. A boa notícia: você está no lugar certo para aprender!';
+    }
+
+    document.getElementById('result-emoji').textContent = emoji;
+    document.getElementById('result-title').textContent = title;
+    document.getElementById('result-score').textContent = score + ' de ' + total + ' acertos';
+    document.getElementById('result-msg').textContent = msg;
+
+    document.getElementById('quiz-retry').addEventListener('click', startQuiz);
+  }
+
+</script>
+</body>
+</html>
